@@ -1,10 +1,11 @@
 package com.tamaskozmer.flexiblerecyclerview.itemviewmodels
 
+import androidx.databinding.ObservableBoolean
 import com.tamaskozmer.flexiblerecyclerview.CarListViewModel
 import com.tamaskozmer.flexiblerecyclerview.ItemViewModel
 import com.tamaskozmer.flexiblerecyclerview.R
 
-class HeaderViewModel(val title: String) : ItemViewModel {
+class HeaderViewModel(val title: String, var editText: String, var readOnly: Boolean) : ItemViewModel {
 
     override val layoutId: Int = R.layout.item_header
 

@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+        <import type="android.view.View" />
         <variable
             name="itemViewModel"
             type="com.tamaskozmer.flexiblerecyclerview.itemviewmodels.HeaderViewModel" />
@@ -23,6 +24,13 @@
             android:text="@{itemViewModel.title}"
             android:textStyle="bold"
             tools:text="Toyota" />
+
+        <EditText
+            android:id="@+id/etInput"
+            android:text="@={itemViewModel.editText}"
+            android:layout_width="match_parent"
+            android:focusable="@{itemViewModel.readOnly ? true : false}"
+            android:layout_height="wrap_content" />
 
         <View
             android:layout_width="match_parent"

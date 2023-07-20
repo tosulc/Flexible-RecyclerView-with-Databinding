@@ -19,11 +19,11 @@ class MainActivity : AppCompatActivity() {
         binding.viewModel = viewModel
         setContentView(binding.root)
 
-        viewModel.events.observe(this, { event ->
+        viewModel.events.observe(this) { event ->
             event.getContentIfNotHandled()?.let {
                 handleAction(it)
             }
-        })
+        }
     }
 
     private fun handleAction(carListEvent: CarListEvent) {

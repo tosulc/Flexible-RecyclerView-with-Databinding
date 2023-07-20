@@ -1,5 +1,6 @@
 package com.tamaskozmer.flexiblerecyclerview
 
+import androidx.databinding.ObservableBoolean
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -24,6 +25,8 @@ class CarListViewModel @Inject constructor(
         get() = _events
     private val _events = MutableLiveData<Event<CarListEvent>>()
 
+    val readOnly: Boolean = false
+
     init {
         loadData()
     }
@@ -42,8 +45,8 @@ class CarListViewModel @Inject constructor(
     private fun createViewData(carsByMake: Map<String, List<CarData>>): List<ItemViewModel> {
         val viewData = mutableListOf<ItemViewModel>()
         carsByMake.keys.forEach {
-            viewData.add(HeaderViewModel(it))
             val cars = carsByMake[it]
+            viewData.add(HeaderViewModel(it, it, readOnly))
             cars?.forEach { car: CarData ->
                 val item = if (car.isAd) {
                     CarAdViewModel(car.id, car.make, car.model, car.price)
